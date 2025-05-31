@@ -145,42 +145,50 @@
 
     <p>式\eqref{eq:VecEq1}の両辺に左側から\(e^{-\mathbf{A}t}\)を乗じて積分すると次式になります。</p>
     \begin{align}
-    \mathbf{c}(t) = \int_0^t e^{-\mathbf{A}t}\mathbf{u}d\tau + \mathbf{d} \label{eq:SysEqn3}
+    \mathbf{c}(t) = \int_0^t e^{-\mathbf{A}t}\mathbf{u}(\tau)d\tau + \mathbf{d} \label{eq:SysEqn3}
     \end{align}
     <p>ここに、\(\mathbf{d}\)は定数ベクトルです。</p>
 
     <p>式\eqref{eq:SysEqn3}の\(\mathbf{c}\)を\(\mathbf{x}=\mathbf{c}e^{\mathbf{A}t}\)に代入すると\(\mathbf{x}\)は次式となります。</p>
     \begin{align}
-    \mathbf{x}(t)=\mathbf{d}e^{\mathbf{A}t} + \int_0^t e^{\mathbf{A}(\tau-T)}\mathbf{u}d\tau \label{eq:SysEqn4}
+    \mathbf{x}(t)=\mathbf{d}e^{\mathbf{A}t} + \int_0^t e^{-\mathbf{A}(\tau-t)}\mathbf{u}(\tau)d\tau \label{eq:SysEqn4}
     \end{align}
 
     <p>\(t=0\)のとき\(\mathbf{x}=\mathbf{d}=\mathbf{x}(0)\)となるので、式\eqref{eq:SysEqn4}は次式となります。</p>
     \begin{align}
-    \mathbf{x}(t)=e^{\mathbf{A}t}\mathbf{x}(0) + \int_0^t e^{\mathbf{A}(\tau-T)}\mathbf{u}d\tau \label{eq:SysEqn5}
+    \mathbf{x}(t)=e^{\mathbf{A}t}\mathbf{x}(0) + \int_0^t e^{-\mathbf{A}(\tau-t)}\mathbf{u}(\tau)d\tau \label{eq:SysEqn5}
     \end{align}
 
-    <p>\(t=T\)のとき\(\mathbf{x}=\mathbf{x}(T)\)とすれば式\eqref{eq:SysEqn5}から次の漸化式が得られます。</p>
+    <p>\(t=nT\)のとき\(\mathbf{x}=\mathbf{x}(nT)\)とすれば式\eqref{eq:SysEqn5}から次式が得られます。</p>
     \begin{align}
-    \mathbf{x}(T)=e^{\mathbf{A}T}\mathbf{x}(0) + \int_0^T e^{\mathbf{A}(\tau-T)}\mathbf{u}d\tau \label{eq:SysEqn6}
+    \mathbf{x}(nT)=e^{\mathbf{A}nT}\mathbf{x}(0) + \int_0^{nT} e^{-\mathbf{A}(\tau-nT)}\mathbf{u}(\tau)d\tau \label{eq:SysEqn6}
     \end{align}
 
-    <p>式\eqref{eq:SysEqn6}の時間区間[0,T]では\(\mathbf{u}(t)=\mathbf{u}(0)\)とすると次式になります。</p>
+    <p>\(t=(n+1)T\)のとき\(\mathbf{x}=\mathbf{x}((n+1)T)\)とすれば式\eqref{eq:SysEqn5}から次式が得られます。</p>
     \begin{align}
-    \mathbf{x}(T)=e^{\mathbf{A}T}\mathbf{x}(0) + \{\int_0^T e^{\mathbf{A}(\tau-T)d\tau}\}\mathbf{u}(0) \label{eq:SysEqn7}
+    \mathbf{x}((n+1)T)=e^{\mathbf{A}(n+1)T}\mathbf{x}(0) + \int_0^{(n+1)T} e^{-\mathbf{A}(\tau-(n+1)T)}\mathbf{u}(\tau)d\tau \label{eq:SysEqn6_2}
+    \end{align}
+
+    <p>式\eqref{eq:SysEqn6}の両辺に\(e^{\mathbf{A}T}\)を乗じて、式\eqref{eq:SysEqn6_2}の両辺から引くと次式が得られます。</p>
+    \begin{align}
+    \mathbf{x}((n+1)T)-e^{\mathbf{A}T}\mathbf{x}(nT) =& \int_0^{(n+1)T} e^{-\mathbf{A}\{-\tau-(n+1)T\}}\mathbf{u}(\tau)d\tau - e^{\mathbf{A}nT}\int_0^{nT} e^{-\mathbf{A}(\tau-nT)}\mathbf{u}(\tau)d\tau \nonumber\\
+    =& \int_0^{(n+1)T} e^{-\mathbf{A}\{-\tau-(n+1)T\}}\mathbf{u}(\tau)d\tau - \int_0^{nT} e^{-\mathbf{A}(\tau-(n+1)T)}\mathbf{u}(\tau)d\tau \nonumber\\
+    =& \int_{nT}^{(n+1)T} e^{-\mathbf{A}\{\tau-(n+1)T\}}\mathbf{u}(\tau)d\tau \label{eq:SysEqn6_1}
+    \end{align}
+
+    <p>\(\tau^\prime=\tau-nT\)に変数変換し、式\eqref{eq:SysEqn6_1}の時間積分区間\([nT,(n+1)T]\)では\(\mathbf{u}(\tau)=\mathbf{u}(nT)\)とすると次式になります。</p>
+    \begin{align}
+    \mathbf{x}((n+1)T)=e^{\mathbf{A}T}\mathbf{x}(nT) + \{\int_0^T e^{-\mathbf{A}(\tau^\prime-T)}\}d\tau^\prime\mathbf{u}(nT) \label{eq:SysEqn7}
     \end{align}
 
     <p>
-      式\eqref{eq:SysEqn7}は\(x(0)\)を初期値として\(T\)秒後の\(x(T)\)の計算式となっています。
-      したがって、初期値\(x(nT)\)に対する\(T\)秒後の\(x((n+1)T)\)は次式となります。
+    式\eqref{eq:SysEqn7}の\(\mathbf{x}(nT)\)、\(\mathbf{u}(nT)\)をそれぞれ\(\mathbf{x}(n)\)、\(\mathbf{u}(n)\)と表記して\(\tau^\prime\)を\(\tau\)に置き換え、
     </p>
     \begin{align}
-    \mathbf{x}((n+1)T)=e^{\mathbf{A}T}\mathbf{x}(nT) + \{\int_0^T e^{\mathbf{A}(\tau-T)d\tau}\}\mathbf{u}(nT) \label{eq:SysEqn8}
+    \mathbf{A}=e^{-\mathbf{A}T},~~~\mathbf{B}=\int_0^T e^{-\mathbf{A}(\tau - T)}d\tau
     \end{align}
-
-    <p>
-      ここで、\(\mathbf{x}(nT)\)を\(\mathbf{x}(n)\)、\(\mathbf{u}(nT)\)を\(\mathbf{u}(n)\)と表記し、\(\mathbf{A}=e^{-\mathbf{A}T}\)、\(\mathbf{B}=\int_0^T e^{\mathbf{A}(\tau - T)}d\tau\)
-      とおくと、次の多変数の離散型状態空間表現が得られます。
-    </p>
+    
+    <p>とおくと、次の多変数の離散型状態空間表現が得られます。</p>
     \begin{align}
     \mathbf{x}(n+1)=\mathbf{A}\mathbf{x}(n) + \mathbf{B}\mathbf{u}(n) \label{eq:SysEqn9}
     \end{align}
