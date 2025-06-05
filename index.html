@@ -32,6 +32,12 @@
     
     <p>ここに、\(\mathbf{x}(n)\)は状態ベクトル(状態空間)、\(\mathbf{y}(n)\)は出力ベクトル、\(\mathbf{A}\)は遷移行列、\(\mathbf{B}\)は入力係数行列です。</p>
     
+    <p>式\eqref{eq:DiscStateEq}をブロック線図で表現すると下図になります。
+      このブロック線図では負帰還(ネガティブフィードバック)を表現するために、
+      フィードバックブロックを\(-\mathbf{A}\)としています。
+    </p> 
+    <img src="FeedBackBlock.jpg" width=600px>
+    
     <h3>離散型状態空間表現の導出</h3>
 
     <p><a href="https://aoyamakohbo.github.io/AnalogStateEq/">連続型多変数状態空間表現</a>を次式とします。</p>
@@ -113,12 +119,6 @@
     \end{array}
     \right. \nonumber
     \end{align}
-
-    <p>式\eqref{eq:DiscStateEq}をブロック線図で表現すると下図になります。
-      このブロック線図では負帰還(ネガティブフィードバック)を表現するために、
-      フィードバックブロックを\(-\mathbf{A}\)としています。
-    </p> 
-    <img src="FeedBackBlock.jpg" width=600px>
     
    <p><a href="https://aoyamakohbo.github.io/Craftlogy/">->TOP</a></p>
 </body>
