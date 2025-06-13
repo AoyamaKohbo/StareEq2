@@ -18,19 +18,19 @@
   </head>
 
   <body>
-    <h3>離散型状態空間表現</h3>
-    <p>離散型状態空間表現は次式となります。</p>
+    <h3>離散時間状態方程式</h3>
+    <p>離散時間状態方程式は次式となります。</p>
 
     \begin{align}
-    \left\{
+    \left.
     \begin{array}{@{\,}rl}
-    \mathbf{x}(n+1)=&\mathbf{A}\mathbf{x}(n) + \mathbf{B}\mathbf{u}(n)\\
+    \mathbf{x}(n+1)=&\mathbf{P}\mathbf{x}(n) + \mathbf{Q}\mathbf{u}(n)\\
     \mathbf{y}(n)  =&\mathbf{C}\mathbf{x}(n)
     \end{array}
-    \right. \label{eq:DiscStateEq}
+    \right\} \label{eq:DiscStateEq}
     \end{align}
     
-    <p>ここに、\(\mathbf{x}(n)\)は状態ベクトル(状態空間)、\(\mathbf{y}(n)\)は出力ベクトル、\(\mathbf{A}\)は遷移行列、\(\mathbf{B}\)は入力係数行列です。</p>
+    <p>ここに、\(\mathbf{x}(n)\)は状態ベクトル、\(\mathbf{y}(n)\)は出力ベクトル、\(\mathbf{A}\)は遷移行列、\(\mathbf{B}\)は入力係数行列です。</p>
     
     <p>式\eqref{eq:DiscStateEq}をブロック線図で表現すると下図になります。
       このブロック線図では負帰還(ネガティブフィードバック)を表現するために、
@@ -38,16 +38,16 @@
     </p> 
     <img src="FeedBackBlock.jpg" width=600px>
     
-    <h3>離散型状態空間表現の導出</h3>
+    <h3>離散時間状態方程式の導出</h3>
 
-    <p><a href="https://aoyamakohbo.github.io/AnalogStateEq/">連続型多変数状態空間表現</a>を次式とします。</p>
+    <p><a href="https://aoyamakohbo.github.io/AnalogStateEq/">多変数連続時間状態方程式</a>を次式とします。</p>
     \begin{align}
-    \left\{
+    \left.
     \begin{array}{@{\,}cl}
     \dot{\mathbf{x}} ~=& \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u}\\
     \mathbf{y} ~=& \mathbf{C}\mathbf{x}
     \end{array}
-    \right. \label{eq:AnlgStateEq}
+    \right\} \label{eq:AnlgStateEq}
     \end{align}
 
     <p>ここで、行列指数関数\(e^{\mathbf{X}}\)を導入します。</p>
@@ -107,14 +107,14 @@
     式\eqref{eq:SysEqn7}の\(\mathbf{x}(nT)\)、\(\mathbf{u}(nT)\)をそれぞれ\(\mathbf{x}(n)\)、\(\mathbf{u}(n)\)と表記して\(\tau^\prime\)を\(\tau\)に置き換え、
     </p>
     \begin{align}
-    \mathbf{A}=e^{-\mathbf{A}T},~~~\mathbf{B}=\int_0^T e^{-\mathbf{A}(\tau - T)}d\tau
+    \mathbf{P}=e^{-\mathbf{A}T},~~~\mathbf{Q}=\int_0^T e^{-\mathbf{A}(\tau - T)}d\tau=\mathbf{A}^{-1}(e^{\mathbf{A}T}-\mathbf{I})\mathbf{B}
     \end{align}
     
-    <p>とおくと、次の多変数の離散型状態空間表現が得られます。</p>
+    <p>とおくと、次の多変数の離散時間状態方程式が得られます。</p>
     \begin{align}
     \left\{
     \begin{array}{@{\,}rl}
-    \mathbf{x}(n+1)=&\mathbf{A}\mathbf{x}(n) + \mathbf{B}\mathbf{u}(n)\\
+    \mathbf{x}(n+1)=&\mathbf{P}\mathbf{x}(n) + \mathbf{Q}\mathbf{u}(n)\\
     \mathbf{y}(n)  =&\mathbf{C}\mathbf{x}(n)
     \end{array}
     \right. \nonumber
