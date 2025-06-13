@@ -30,11 +30,11 @@
     \right\} \label{eq:DiscStateEq}
     \end{align}
     
-    <p>ここに、\(\mathbf{x}(n)\)は状態ベクトル、\(\mathbf{y}(n)\)は出力ベクトル、\(\mathbf{A}\)は遷移行列、\(\mathbf{B}\)は入力係数行列です。</p>
+    <p>ここに、\(\mathbf{x}(n)\)は状態ベクトル、\(\mathbf{y}(n)\)は出力ベクトル、\(\mathbf{P}\)は遷移行列、\(\mathbf{Q}\)は入力係数行列です。</p>
     
     <p>式\eqref{eq:DiscStateEq}をブロック線図で表現すると下図になります。
       このブロック線図では負帰還(ネガティブフィードバック)を表現するために、
-      フィードバックブロックを\(-\mathbf{A}\)としています。
+      フィードバックブロックを\(-\mathbf{P}\)としています。
     </p> 
     <img src="FeedBackBlock.jpg" width=600px>
     
@@ -71,7 +71,7 @@
     \end{align}
     <p>ここに、\(\mathbf{d}\)は定数ベクトルです。</p>
 
-    <p>式\eqref{eq:SysEqn3}の\(\mathbf{c}\)を\(\mathbf{x}=\mathbf{c}e^{\mathbf{A}t}\)に代入すると\(\mathbf{x}\)は次式となります。</p>
+    <p>式\eqref{eq:SysEqn3}の\(\mathbf{c}(t)\)を\(\mathbf{x}=\mathbf{c}e^{\mathbf{A}t}\)に代入すると\(\mathbf{x}\)は次式となります。</p>
     \begin{align}
     \mathbf{x}(t)=\mathbf{d}e^{\mathbf{A}t} + \int_0^t e^{-\mathbf{A}(\tau-t)}\mathbf{u}(\tau)d\tau \label{eq:SysEqn4}
     \end{align}
